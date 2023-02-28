@@ -1,5 +1,5 @@
 {% set name = "stream-unzip" %}
-{% set version = "0.0.82" %}
+{% set version = "0.0.83" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/stream-unzip-{{ version }}.tar.gz
-  sha256: 51a9ec7ebe569e4c0d2c10c253239a751469623035985a212623a0fc293c14e7
+  sha256: 8bc2c25d5a12f5a4b6527461e5c0f34a38facfa72dce6279e14f1d312c6abf94
 
 build:
   noarch: python
