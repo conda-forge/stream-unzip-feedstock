@@ -17,10 +17,11 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.5
+    - python >=3.6.7
+    - hatchling
   run:
     - pycryptodome >=3.10.1
-    - python >=3.5
+    - python >=3.6.7
     - stream-inflate >=0.0.12
 
 test:
