@@ -10,18 +10,22 @@ source:
   sha256: a25bdc547fc591ebb606a84f3c820048cf1275c5bb4c7d7f25572cd5cc109408
 
 build:
-  noarch: python
+  skip: True  # [py<37]
   script: {{ PYTHON }} -m pip install . -vv
   number: 0
 
 requirements:
+  build:
+    - {{ stdlib('c') }}
+    - {{ compiler('c') }}
+    - {{ compiler('rust') }}
   host:
     - pip
-    - python >=3.6.7
-    - hatchling
+    - python
+    - maturin >=1.7.4,<2.0.0
   run:
+    - python
     - pycryptodome >=3.10.1
-    - python >=3.6.7
     - stream-inflate >=0.0.12
 
 test:
