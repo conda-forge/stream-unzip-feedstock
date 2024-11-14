@@ -1,5 +1,5 @@
 {% set name = "stream-unzip" %}
-{% set version = "0.0.97" %}
+{% set version = "0.0.98" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: a25bdc547fc591ebb606a84f3c820048cf1275c5bb4c7d7f25572cd5cc109408
+  sha256: 6230b0acc3311b6503e4f16265f975cdc5c08a60cfdd9c7094d532eb7c8c465f
 
 build:
-  skip: True  # [py<37]
+  skip: true  # [py<37]
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   build:
