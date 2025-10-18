@@ -12,7 +12,9 @@ source:
 build:
   skip: true  # [py<37]
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
+  script_env:
+    - PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
 
 requirements:
   build:
