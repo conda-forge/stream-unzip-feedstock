@@ -1,0 +1,51 @@
+schema_version: 1
+
+context:
+  name: stream-unzip
+  version: "0.0.100"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name | replace('-', '_') }}-${{ version }}.tar.gz
+  sha256: 4b7309a33bbad7f8ae19a57d2ac49475084ebddb9d2d52546648c95503c4b76c
+
+build:
+  number: 0
+  script:
+    env:
+      PYO3_USE_ABI3_FORWARD_COMPATIBILITY: 1
+    content: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  build:
+    - ${{ stdlib('c') }}
+    - ${{ compiler('c') }}
+    - ${{ compiler('rust') }}
+  host:
+    - pip
+    - python
+    - maturin >=1.7.4,<2.0.0
+  run:
+    - python
+    - pycryptodome >=3.10.1
+    - stream-inflate >=0.0.12
+
+tests:
+  - python:
+      imports:
+        - stream_unzip
+      pip_check: true
+
+about:
+  summary: Python function to stream unzip all the files in a ZIP archive, without loading the entire ZIP file into memory or any of its uncompressed files
+  license: MIT
+  license_file:
+    - LICENSE
+  homepage: https://github.com/uktrade/stream-unzip
+
+extra:
+  recipe-maintainers:
+    - thewchan
